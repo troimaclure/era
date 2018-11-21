@@ -24,6 +24,9 @@ public class EntiteJoin extends Entite {
 
     public ArrayList<Entite> entites = new ArrayList<>();
 
+    public EntiteJoin() {
+    }
+
     public EntiteJoin(String text) {
         this.text = text;
         fontColor = Color.WHITE;
