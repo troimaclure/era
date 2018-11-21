@@ -5,6 +5,7 @@
  */
 package era.entite;
 
+import era.manager.EntiteManager;
 import era.manager.GeneralManager;
 import era.utils.Drawutils;
 import java.awt.BasicStroke;
@@ -59,9 +60,8 @@ public class EntiteJoin extends Entite {
 
     @Override
     public boolean isHover(Point pt) {
-        if (!entites.stream().noneMatch((entite) -> (entite.hover)))
-            return false;
-        return this.contains(pt);
+        boolean d = this.contains(pt);
+        return d ;
     }
 
     public void resize() {

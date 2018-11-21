@@ -35,11 +35,10 @@ public class EntiteManager {
         boolean find = false;
         //entity befor lines 
         for (Entite entite : getEntites()) {
-            if (!(entite instanceof AbstractLine)) {
+            if (!(entite instanceof AbstractLine) && !(entite instanceof EntiteJoin)) {
                 entite.hover = entite.isHover(p);
                 if (entite.hover) {
                     find = true;
-
                 }
                 for (Property prop : entite.getProps()) {
                     prop.hover = entite.hover && (prop.isHover(p));
@@ -52,12 +51,28 @@ public class EntiteManager {
                 if ((entite instanceof AbstractLine)) {
                     entite.hover = entite.isHover(p);
                     if (entite.hover) {
+                        find = true;
                         break;
                     }
                 }
             }
         } else {
             getEntites().stream().filter((entite) -> ((entite instanceof AbstractLine))).forEachOrdered((entite) -> {
+                entite.hover = false;
+            });
+        }
+        //join after
+        if (!find) {
+            for (Entite entite : getEntites()) {
+                if ((entite instanceof EntiteJoin)) {
+                    entite.hover = entite.isHover(p);
+                    if (entite.hover) {
+                        break;
+                    }
+                }
+            }
+        } else {
+            getEntites().stream().filter((entite) -> ((entite instanceof EntiteJoin))).forEachOrdered((entite) -> {
                 entite.hover = false;
             });
         }
