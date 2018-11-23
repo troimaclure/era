@@ -49,6 +49,7 @@ public class GeneralMouseListener extends MouseAdapter {
         } else if (EntiteManager.currentLine != null && e == null) {
             EntiteManager.currentLine = null;
         }
+        EntiteManager.mouseRelease(); 
     }
 
     private void leftClick(MouseEvent me) {

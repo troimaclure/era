@@ -29,6 +29,8 @@ public class EntiteManager {
     public static AbstractLine currentLine = null;
     public static Entite currentHover;
     private static ArrayList<Entite> arrayCopy;
+    private static Entite movedEntite;
+    public static boolean removedMode = false;
 
     public static void mouseMove(int x, int y) {
         Point p = new Point(x, y);
@@ -108,6 +110,7 @@ public class EntiteManager {
     }
 
     public static void moveElement(Point point, Entite e) {
+        movedEntite = e;
         if (e instanceof EntiteJoin)
             return;
         if (GeneralManager.alignAuto) {
@@ -119,12 +122,25 @@ public class EntiteManager {
             }
         }
         e.setLocation(point);
+        ArrayList<EntiteJoin> joins = new ArrayList<>();
         for (Entite entite : entites) {
-            if (entite instanceof EntiteJoin && ((EntiteJoin) entite).entites.contains(e)) {
-                ((EntiteJoin) entite).resize();
+            if (entite instanceof EntiteJoin) {
+                joins.add((EntiteJoin) entite);
+                if (((EntiteJoin) entite).entites.contains(e) && !removedMode)
+                    ((EntiteJoin) entite).resize();
             }
-
         }
+        for (EntiteJoin join : joins) {
+            join.isDropping = e.intersects(join) && !join.entites.contains(e);
+        }
+        if (removedMode) {
+            for (EntiteJoin join : joins) {
+                if (join.entites.contains(e) && !e.intersects(join)) {
+                    join.entites.remove(e);
+                }
+            }
+        }
+
     }
 
     public static Entite getHover() {
@@ -337,6 +353,17 @@ public class EntiteManager {
             printer.mostBottom = entite.y > printer.mostBottom ? entite.y : printer.mostBottom;
         }
         return printer;
+    }
+
+    public static void mouseRelease() {
+        for (Entite entite : entites) {
+            if (entite instanceof EntiteJoin && ((EntiteJoin) entite).isDropping) {
+                if (movedEntite != null) {
+                    ((EntiteJoin) entite).entites.add(movedEntite);
+                }
+                ((EntiteJoin) entite).isDropping = false;
+            }
+        }
     }
 
     public static class LayoutToPrint {

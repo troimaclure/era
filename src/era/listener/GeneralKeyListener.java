@@ -38,6 +38,7 @@ public class GeneralKeyListener extends KeyAdapter {
     @Override
     public void keyReleased(KeyEvent ke) {
         RepaintThread.setRepaintCounter(1);
+        System.out.println(ke.getKeyCode());
         switch (ke.getKeyCode()) {
             case 32: //space
                 GeneralManager.isTranslateMode = false;
@@ -46,6 +47,9 @@ public class GeneralKeyListener extends KeyAdapter {
             case 9: //tab
                 EntiteManager.selectNext();
                 break;
+            case 18: //alt
+                EntiteManager.removedMode = false;
+                break;
         }
     }
 
@@ -53,7 +57,9 @@ public class GeneralKeyListener extends KeyAdapter {
     public void keyPressed(KeyEvent ke) {
         RepaintThread.setRepaintCounter(1);;
         switch (ke.getKeyCode()) {
-
+            case 18: //alt
+                EntiteManager.removedMode = true;
+                break;
             case 116://f5
                 XmlManager.reload();
                 break;

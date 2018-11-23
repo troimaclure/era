@@ -33,6 +33,7 @@ public abstract class Entite extends Rectangle implements IDrawable, IHoverable 
     public boolean isShowProperty = true;
     public String comment = "";
 
+
     public Entite() {
     }
 
@@ -139,5 +140,5 @@ public abstract class Entite extends Rectangle implements IDrawable, IHoverable 
         }
 
     }
-    
+
 }

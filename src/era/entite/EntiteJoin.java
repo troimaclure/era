@@ -8,6 +8,7 @@ package era.entite;
 import era.manager.EntiteManager;
 import era.manager.GeneralManager;
 import era.utils.Drawutils;
+import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 public class EntiteJoin extends Entite {
 
     public ArrayList<Entite> entites = new ArrayList<>();
+    public boolean isDropping;
 
     public EntiteJoin() {
     }
@@ -45,6 +47,11 @@ public class EntiteJoin extends Entite {
         FontRenderContext frc = new FontRenderContext(null, true, true);
         Rectangle2D r2D = GeneralManager.font.getStringBounds(text, frc);
         g.setColor(color);
+        if (isDropping) {
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+            g.fill(r);
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+        }
         Rectangle rect = new Rectangle(this.x + this.width - (int) r2D.getWidth() - 20 + currentGrow / 4, this.y - 50 - currentGrow / 4, (int) r2D.getWidth() + 23, 50);
         g.fill(rect);
 
@@ -61,7 +68,7 @@ public class EntiteJoin extends Entite {
     @Override
     public boolean isHover(Point pt) {
         boolean d = this.contains(pt);
-        return d ;
+        return d;
     }
 
     public void resize() {
@@ -69,6 +76,8 @@ public class EntiteJoin extends Entite {
         y = 1000000000;
         width = -100000;
         height = -1000000;
+        if (entites.size() == 0)
+            return;
         x = entites.get(0).x;
         y = entites.get(0).y;
         for (Entite entite : entites) {
