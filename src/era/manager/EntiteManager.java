@@ -191,10 +191,15 @@ public class EntiteManager {
             entites.removeIf((t) -> {
                 return t instanceof LineWrapper && (!entites.contains(((LineWrapper) t).target) || !entites.contains(((LineWrapper) t).source));
             });
+            for (Entite entite : entites) {
+                if (entite instanceof EntiteJoin) {
+                    EntiteJoin e = ((EntiteJoin) entite);
+                    e.entites.removeIf((t) -> {
+                        return t.selected;
+                    });
+                }
+            }
         }
-    }
-
-    public static void remove(Entite e) {
     }
 
     public static void setType() {
