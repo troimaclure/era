@@ -13,6 +13,8 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
@@ -73,7 +75,15 @@ public class EntiteRect extends Entite {
         if (isShowProperty) {
             int count = 0;
 
-            for (Property property : (ArrayList<Property>) (props.clone())) {
+            //ordered property 
+            ArrayList<Property> clone = (ArrayList<Property>) props.clone();
+            Collections.sort(clone, new Comparator<Property>() {
+                @Override
+                public int compare(Property t, Property t1) {
+                    return t.order - t1.order;
+                }
+            });
+            for (Property property : clone) {
                 property.fontColor = fontColor;
                 count++;
                 property.x = this.x + 5;

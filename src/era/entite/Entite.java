@@ -22,6 +22,7 @@ import java.util.Collection;
  */
 public abstract class Entite extends Rectangle implements IDrawable, IHoverable {
 
+    public int entityCount = 0;
     public ArrayList<Property> props = new ArrayList<>();
     public int currentGrow = 0;
     public int maxGrow = 20;
@@ -32,7 +33,6 @@ public abstract class Entite extends Rectangle implements IDrawable, IHoverable 
     public boolean selected;
     public boolean isShowProperty = true;
     public String comment = "";
-
 
     public Entite() {
     }
@@ -108,6 +108,22 @@ public abstract class Entite extends Rectangle implements IDrawable, IHoverable 
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public int getEntityCount() {
+        return entityCount;
+    }
+
+    public void setEntityCount(int entityCount) {
+        this.entityCount = entityCount;
+    }
+
+    public boolean isIsShowProperty() {
+        return isShowProperty;
+    }
+
+    public void setIsShowProperty(boolean isShowProperty) {
+        this.isShowProperty = isShowProperty;
     }
 
     public Collection<ActionEntite> getActions() {

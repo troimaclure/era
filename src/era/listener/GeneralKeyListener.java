@@ -5,6 +5,8 @@
  */
 package era.listener;
 
+import era.entite.Entite;
+import era.entite.Property;
 import era.manager.EntiteManager;
 import era.manager.ExportManager;
 import era.manager.GeneralManager;
@@ -26,6 +28,7 @@ import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 /**
  *
@@ -78,18 +81,12 @@ public class GeneralKeyListener extends KeyAdapter {
                 }
                 break;
             case 38: //up
-                isEntitySelected = false;
-                EntiteManager.getEntites().stream().filter((e) -> e.selected).forEach((t) -> {
-                    isEntitySelected = true;
-                    if (ke.isControlDown()) {
-                        t.height -= 50;
-                    } else {
-                        t.y -= 50;
-                    }
-                });
-                if (!isEntitySelected) {
-                    translate.y += (50);
+                if (ke.isAltDown()) {
+                    upWithAlt();
+                } else {
+                    upWithoutAlt(ke);
                 }
+
                 break;
             case 39: //right
                 isEntitySelected = false;
@@ -105,18 +102,11 @@ public class GeneralKeyListener extends KeyAdapter {
                     translate.x -= (50);
                 }
                 break;
-            case 40: //down
-                isEntitySelected = false;
-                EntiteManager.getEntites().stream().filter((e) -> e.selected).forEach((t) -> {
-                    isEntitySelected = true;
-                    if (ke.isControlDown()) {
-                        t.height += 50;
-                    } else {
-                        t.y += 50;
-                    }
-                });
-                if (!isEntitySelected) {
-                    translate.y -= (50);
+            case 40://down            
+                if (ke.isAltDown()) {
+                    downWithAlt();
+                } else {
+                    downWithoutAlt(ke);
                 }
                 break;
             case 27: //echap
@@ -317,4 +307,52 @@ public class GeneralKeyListener extends KeyAdapter {
         }
     }
 
+    private void downWithoutAlt(KeyEvent ke) {
+        //down
+        isEntitySelected = false;
+        EntiteManager.getEntites().stream().filter((e) -> e.selected).forEach((t) -> {
+            isEntitySelected = true;
+            if (ke.isControlDown()) {
+                t.height += 50;
+            } else {
+                t.y += 50;
+            }
+        });
+        if (!isEntitySelected) {
+            translate.y -= (50);
+        }
+        return;
+    }
+
+    private void upWithoutAlt(KeyEvent ke) {
+        isEntitySelected = false;
+        EntiteManager.getEntites().stream().filter((e) -> e.selected).forEach((t) -> {
+            isEntitySelected = true;
+            if (ke.isControlDown()) {
+                t.height -= 50;
+            } else {
+                t.y -= 50;
+            }
+        });
+        if (!isEntitySelected) {
+            translate.y += (50);
+        }
+    }
+
+    private void upWithAlt() {
+        EntiteManager.getEntites().forEach((entite) -> {
+            entite.props.stream().filter((prop) -> (prop.selected)).forEachOrdered((prop) -> {
+                EntiteManager.up(entite, prop);
+            });
+        });
+
+    }
+
+    private void downWithAlt() {
+        EntiteManager.getEntites().forEach((entite) -> {
+            entite.props.stream().filter((prop) -> (prop.selected)).forEachOrdered((prop) -> {
+                EntiteManager.down(entite, prop);
+            });
+        });
+    }
 }

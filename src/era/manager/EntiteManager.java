@@ -90,6 +90,7 @@ public class EntiteManager {
             entite.selected = entite.hover;
             for (Property prop : entite.getProps()) {
                 prop.selected = prop.hover;
+                RepaintThread.setRepaintCounter(100);
             }
         });
 
@@ -183,7 +184,6 @@ public class EntiteManager {
                     entite.props.remove(prop);
                 });
             });
-
         } else {
             entites.removeIf((t) -> {
                 return t.selected;
@@ -369,6 +369,42 @@ public class EntiteManager {
                 ((EntiteJoin) entite).isDropping = false;
             }
         }
+    }
+
+    public static void up(Entite entite, Property prop) {
+        Property ref = null;
+        for (Property p : entite.props) {
+            if (p == prop)
+                continue;
+            if (ref == null && p.order < prop.order) {
+                ref = p;
+            } else if (p.order < prop.order && p.order > ref.order) {
+                ref = p;
+            }
+        }
+        if (ref == null)
+            return;
+        int old = prop.order;
+        prop.order = ref.order;
+        ref.order = old;
+    }
+
+    public static void down(Entite entite, Property prop) {
+        Property ref = null;
+        for (Property p : entite.props) {
+            if (p == prop)
+                continue;
+            if (ref == null && p.order > prop.order) {
+                ref = p;
+            } else if (p.order > prop.order && p.order < ref.order) {
+                ref = p;
+            }
+        }
+        if (ref == null)
+            return;
+        int old = prop.order;
+        prop.order = ref.order;
+        ref.order = old;
     }
 
     public static class LayoutToPrint {

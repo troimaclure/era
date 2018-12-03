@@ -193,7 +193,7 @@ public class CreateProperty extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         EntiteManager.getEntites().stream().filter(e -> e.selected).forEach((entite) -> {
-            entite.props.add(new Property(this.type.getText(), this.name.getText(), this.comment.getText(), entite.x, entite.y, 0, 0));
+            entite.props.add(new Property(++entite.entityCount, this.type.getText(), this.name.getText(), this.comment.getText(), entite.x, entite.y, 0, 0));
         });
         this.setVisible(false);
         RepaintThread.setRepaintCounter(1);

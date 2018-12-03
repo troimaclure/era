@@ -30,9 +30,11 @@ public class Property extends Entite {
     public Font fontSelected = new Font("Segoe UI", 0, 20);
     public Rectangle commentRect;
     public boolean recalc = false;
+    public int order;
 
-    public Property(String type, String name, String comment, int x, int y, int w, int h) {
+    public Property(int number, String type, String name, String comment, int x, int y, int w, int h) {
         super(x, y, w, h);
+        this.order = number;
         this.type = type;
         this.name = name;
         this.comment = comment;
