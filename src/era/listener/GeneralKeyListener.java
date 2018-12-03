@@ -41,7 +41,6 @@ public class GeneralKeyListener extends KeyAdapter {
     @Override
     public void keyReleased(KeyEvent ke) {
         RepaintThread.setRepaintCounter(1);
-        System.out.println(ke.getKeyCode());
         switch (ke.getKeyCode()) {
             case 32: //space
                 GeneralManager.isTranslateMode = false;

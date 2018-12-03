@@ -141,19 +141,13 @@ public class GeneralMouseListener extends MouseAdapter {
         for (int i = 0; i < 2; i++) {
             System.out.print("[ ");
             for (int j = i; j < matrix.length; j += 2) {
-                System.out.printf("%5.1f ", matrix[j]);
             }
-            System.out.print("]\n");
         }
         System.out.print("[ ");
         for (int i = 0; i < loRow.length; i++) {
-            System.out.printf("%3d   ", loRow);
-
         }
 
         System.out.print("]\n");
-
-        System.out.println("---------------------");
 
     }
 

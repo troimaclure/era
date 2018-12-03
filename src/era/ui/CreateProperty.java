@@ -223,7 +223,6 @@ public class CreateProperty extends javax.swing.JFrame {
 
     }//GEN-LAST:event_commentKeyReleased
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField comment;
     private javax.swing.JButton jButton1;

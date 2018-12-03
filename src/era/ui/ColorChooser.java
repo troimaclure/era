@@ -140,7 +140,6 @@ public class ColorChooser extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

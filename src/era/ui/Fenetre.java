@@ -71,13 +71,12 @@ public class Fenetre extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public era.ui.Panneau panneau;
     // End of variables declaration//GEN-END:variables
 
     public void toggleFullScreen() {
-        dispose(); 
+        dispose();
         isFullscreen = !isFullscreen;
         this.setResizable(!isFullscreen);
         this.setUndecorated(isFullscreen);

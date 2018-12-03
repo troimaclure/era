@@ -17,7 +17,7 @@ import java.awt.Point;
 public class LineWrapper extends AbstractLine {
 
     public AbstractLine line;
-    boolean type ;
+    boolean type;
 
     public LineWrapper() {
     }
