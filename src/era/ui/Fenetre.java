@@ -41,7 +41,7 @@ public class Fenetre extends javax.swing.JFrame {
         panneau = new era.ui.Panneau();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Mon E.R.A que j <3 tro");
+        setTitle("Diagram faster !");
         setState(6);
 
         panneau.setBackground(new java.awt.Color(51, 51, 51));
