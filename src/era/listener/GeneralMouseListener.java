@@ -171,6 +171,8 @@ public class GeneralMouseListener extends MouseAdapter {
                 GeneralManager.createSelector(GeneralManager.startingTranslateRelative.x, GeneralManager.startingTranslateRelative.y, p.x, p.y);
                 EntiteManager.checkEntiteSelector(me.isShiftDown());
             }
+        } else {
+            GeneralManager.translateRelative(me.getX(), me.getY());
         }
     }
 

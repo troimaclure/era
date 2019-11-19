@@ -69,7 +69,7 @@ public class RenameElement extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(java.awt.Color.white);
         jLabel1.setLabelFor(jTextField1);
-        jLabel1.setText("Rename project");
+        jLabel1.setText("Rename element");
 
         jButton1.setBackground(new java.awt.Color(44, 62, 80));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

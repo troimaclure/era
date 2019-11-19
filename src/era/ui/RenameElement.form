@@ -122,7 +122,7 @@
             <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="jTextField1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Rename project"/>
+            <Property name="text" type="java.lang.String" value="Rename element"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">

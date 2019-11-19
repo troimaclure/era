@@ -10,7 +10,6 @@ import era.listener.GeneralMouseListener;
 import era.manager.EntiteManager;
 import era.manager.GeneralManager;
 import era.manager.MenuManager;
-import era.thread.RepaintThread;
 import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -100,14 +99,14 @@ public class Panneau extends JPanel {
     private void setAntialiasing(Graphics2D g2) {
 
         g2.setRenderingHints(new RenderingHints(
-                RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON));
+            RenderingHints.KEY_ANTIALIASING,
+            RenderingHints.VALUE_ANTIALIAS_ON));
 
     }
 
     public void drawTitle(Graphics2D g, String name) {
+        Font f = g.getFont();
         g.setFont(new Font("Segoe UI", Font.BOLD, 42));
-
         g.setColor(GeneralManager.background.equals(Color.BLACK) ? Color.WHITE : GeneralManager.background.darker());
         g.drawString(name, 49, 49);
         g.drawString(name, 48, 51);
@@ -115,7 +114,7 @@ public class Panneau extends JPanel {
         g.drawString(name, 51, 51);
         g.setColor(GeneralManager.background.equals(Color.BLACK) ? Color.BLACK : GeneralManager.background.brighter());
         g.drawString(name, 50, 50);
-
+        g.setFont(f);
     }
 
 }

@@ -5,8 +5,6 @@
  */
 package era.listener;
 
-import era.entite.Entite;
-import era.entite.Property;
 import era.manager.EntiteManager;
 import era.manager.ExportManager;
 import era.manager.GeneralManager;
@@ -28,7 +26,6 @@ import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 /**
  *
@@ -194,7 +191,7 @@ public class GeneralKeyListener extends KeyAdapter {
                 break;
 
         }
-        switch (ke.getKeyChar()) {
+        switch (Character.toLowerCase(ke.getKeyChar())) {
 
             case 'p':
                 if (EntiteManager.getSelected() != null) {
@@ -228,30 +225,30 @@ public class GeneralKeyListener extends KeyAdapter {
                     RepaintThread.setRepaintCounter(50);
                     //<editor-fold defaultstate="collapsed" desc="backcolor">
                     MenuManager.show(GeneralManager.getCursor().x, GeneralManager.getCursor().y,
-                            new ActionColor[]{
-                                new ActionColor("", Color.decode("#ffffff")),
-                                new ActionColor("", Color.decode("#000000")),
-                                new ActionColor("", Color.decode("#1abc9c")),
-                                new ActionColor("", Color.decode("#16a085")),
-                                new ActionColor("", Color.decode("#2ecc71")),
-                                new ActionColor("", Color.decode("#27ae60")),
-                                new ActionColor("", Color.decode("#3498db")),
-                                new ActionColor("", Color.decode("#2980b9")),
-                                new ActionColor("", Color.decode("#9b59b6")),
-                                new ActionColor("", Color.decode("#8e44ad")),
-                                new ActionColor("", Color.decode("#34495e")),
-                                new ActionColor("", Color.decode("#2c3e50")),
-                                new ActionColor("", Color.decode("#f1c40f")),
-                                new ActionColor("", Color.decode("#f39c12")),
-                                new ActionColor("", Color.decode("#e67e22")),
-                                new ActionColor("", Color.decode("#d35400")),
-                                new ActionColor("", Color.decode("#e74c3c")),
-                                new ActionColor("", Color.decode("#c0392b")),
-                                new ActionColor("", Color.decode("#ecf0f1")),
-                                new ActionColor("", Color.decode("#bdc3c7")),
-                                new ActionColor("", Color.decode("#95a5a6")),
-                                new ActionColor("", Color.decode("#7f8c8d"))
-                            });
+                        new ActionColor[]{
+                            new ActionColor("", Color.decode("#ffffff")),
+                            new ActionColor("", Color.decode("#000000")),
+                            new ActionColor("", Color.decode("#1abc9c")),
+                            new ActionColor("", Color.decode("#16a085")),
+                            new ActionColor("", Color.decode("#2ecc71")),
+                            new ActionColor("", Color.decode("#27ae60")),
+                            new ActionColor("", Color.decode("#3498db")),
+                            new ActionColor("", Color.decode("#2980b9")),
+                            new ActionColor("", Color.decode("#9b59b6")),
+                            new ActionColor("", Color.decode("#8e44ad")),
+                            new ActionColor("", Color.decode("#34495e")),
+                            new ActionColor("", Color.decode("#2c3e50")),
+                            new ActionColor("", Color.decode("#f1c40f")),
+                            new ActionColor("", Color.decode("#f39c12")),
+                            new ActionColor("", Color.decode("#e67e22")),
+                            new ActionColor("", Color.decode("#d35400")),
+                            new ActionColor("", Color.decode("#e74c3c")),
+                            new ActionColor("", Color.decode("#c0392b")),
+                            new ActionColor("", Color.decode("#ecf0f1")),
+                            new ActionColor("", Color.decode("#bdc3c7")),
+                            new ActionColor("", Color.decode("#95a5a6")),
+                            new ActionColor("", Color.decode("#7f8c8d"))
+                        });
 //</editor-fold>
                 }
 
@@ -264,30 +261,30 @@ public class GeneralKeyListener extends KeyAdapter {
                 RepaintThread.setRepaintCounter(50);
                 //<editor-fold defaultstate="collapsed" desc="fontColor">
                 MenuManager.show(GeneralManager.getCursor().x, GeneralManager.getCursor().y,
-                        new ActionFontColor[]{
-                            new ActionFontColor("", Color.decode("#ffffff")),
-                            new ActionFontColor("", Color.decode("#000000")),
-                            new ActionFontColor("", Color.decode("#1abc9c")),
-                            new ActionFontColor("", Color.decode("#16a085")),
-                            new ActionFontColor("", Color.decode("#2ecc71")),
-                            new ActionFontColor("", Color.decode("#27ae60")),
-                            new ActionFontColor("", Color.decode("#3498db")),
-                            new ActionFontColor("", Color.decode("#2980b9")),
-                            new ActionFontColor("", Color.decode("#9b59b6")),
-                            new ActionFontColor("", Color.decode("#8e44ad")),
-                            new ActionFontColor("", Color.decode("#34495e")),
-                            new ActionFontColor("", Color.decode("#2c3e50")),
-                            new ActionFontColor("", Color.decode("#f1c40f")),
-                            new ActionFontColor("", Color.decode("#f39c12")),
-                            new ActionFontColor("", Color.decode("#e67e22")),
-                            new ActionFontColor("", Color.decode("#d35400")),
-                            new ActionFontColor("", Color.decode("#e74c3c")),
-                            new ActionFontColor("", Color.decode("#c0392b")),
-                            new ActionFontColor("", Color.decode("#ecf0f1")),
-                            new ActionFontColor("", Color.decode("#bdc3c7")),
-                            new ActionFontColor("", Color.decode("#95a5a6")),
-                            new ActionFontColor("", Color.decode("#7f8c8d"))
-                        });
+                    new ActionFontColor[]{
+                        new ActionFontColor("", Color.decode("#ffffff")),
+                        new ActionFontColor("", Color.decode("#000000")),
+                        new ActionFontColor("", Color.decode("#1abc9c")),
+                        new ActionFontColor("", Color.decode("#16a085")),
+                        new ActionFontColor("", Color.decode("#2ecc71")),
+                        new ActionFontColor("", Color.decode("#27ae60")),
+                        new ActionFontColor("", Color.decode("#3498db")),
+                        new ActionFontColor("", Color.decode("#2980b9")),
+                        new ActionFontColor("", Color.decode("#9b59b6")),
+                        new ActionFontColor("", Color.decode("#8e44ad")),
+                        new ActionFontColor("", Color.decode("#34495e")),
+                        new ActionFontColor("", Color.decode("#2c3e50")),
+                        new ActionFontColor("", Color.decode("#f1c40f")),
+                        new ActionFontColor("", Color.decode("#f39c12")),
+                        new ActionFontColor("", Color.decode("#e67e22")),
+                        new ActionFontColor("", Color.decode("#d35400")),
+                        new ActionFontColor("", Color.decode("#e74c3c")),
+                        new ActionFontColor("", Color.decode("#c0392b")),
+                        new ActionFontColor("", Color.decode("#ecf0f1")),
+                        new ActionFontColor("", Color.decode("#bdc3c7")),
+                        new ActionFontColor("", Color.decode("#95a5a6")),
+                        new ActionFontColor("", Color.decode("#7f8c8d"))
+                    });
 //</editor-fold>
                 break;
             case 't':
